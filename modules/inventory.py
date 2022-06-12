@@ -20,4 +20,4 @@ class Inventory:
             for row in reader:
                 movies.append(Inventory(**dict(row)))
 
-        return movies
+        return movies 

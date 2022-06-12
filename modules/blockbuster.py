@@ -60,7 +60,6 @@ class Blockbuster:
                         if movie_title == movie.title:
                             movie.copies_available -= 1
                         
-            
             if cust_id == customer.id and customer.account_type == 'px':
                 if len(customer.current_video_rentals.split('/')) >= 3:
                     print("\nUh Oh, Exceeds Rental Limit For This Customer")
@@ -72,9 +71,51 @@ class Blockbuster:
                     for i, movie in enumerate(self.inventory):
                         if movie_title == movie.title:
                             movie.copies_available -= 1
-        
-    
-       
-            
 
-    
+            if cust_id == customer.id and customer.account_type == 'sf':
+                if customer.current_video_rentals != '':
+                    print("\nUh Oh, Exceeds Rental Limit For This Customer")
+                for i, movie in enumerate(self.inventory):
+                    if movie_title == movie.title:
+                        if movie.rating == 'R':
+                            print('Family Account Cannot Rent R Movies')
+                            return
+                if customer.current_video_rentals == '':
+                    print('\nVideo Rented Sucessfully')
+                    if(customer.current_video_rentals) == '':
+                        customer.current_video_rentals += f'{movie_title}'
+                    else: customer.current_video_rentals += f'/{movie_title}'
+                    for i, movie in enumerate(self.inventory):
+                        if movie_title == movie.title:
+                            movie.copies_available -= 1
+
+            if cust_id == customer.id and customer.account_type == 'pf':
+                if len(customer.current_video_rentals.split('/')) >= 3:
+                    print("\nUh Oh, Exceeds Rental Limit For This Customer")
+                for i, movie in enumerate(self.inventory):
+                    if movie_title == movie.title:
+                        if movie.rating == 'R':
+                            print('\nFamily Account Cannot Rent R Movies')
+                            return
+                if len(customer.current_video_rentals.split('/')) < 3:
+                    print('\nVideo Rented Sucessfully')
+                    if(customer.current_video_rentals) == '':
+                        customer.current_video_rentals += f'{movie_title}'
+                    else: customer.current_video_rentals += f'/{movie_title}'
+                    for i, movie in enumerate(self.inventory):
+                        if movie_title == movie.title:
+                            movie.copies_available -= 1
+        
+    def return_video(self):
+        movie_title = str(input('\nEnter Movie Title: '))
+        cust_id = int(input('Enter Customer ID: '))
+        for i, customer in enumerate(self.customers):
+            if cust_id == customer.id:
+                if movie_title in customer.current_video_rentals:
+                    print('\nVideo Return Successful')
+                    customer.current_video_rentals = customer.current_video_rentals.replace(movie_title, '')
+                    for i, movie in enumerate(self.inventory):
+                        if movie_title == movie.title:
+                            movie.copies_available += 1
+        
+        

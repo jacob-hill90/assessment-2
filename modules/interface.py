@@ -34,7 +34,8 @@ def interface():
             blockbuster.rent_video()
         
         elif option == 6:
-            print('return vid')
+            blockbuster.view_inventory()
+            blockbuster.return_video()
 
         elif option == 0:
             exit()

@@ -20,4 +20,4 @@ class Customer:
             for row in reader:
                 customers.append(Customer(**dict(row)))
         
-        return customers
+        return customers 
