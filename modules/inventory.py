@@ -1,6 +1,7 @@
 import csv
 import os.path
 
+#Create inventory class with attributes and object method - to use for methods in blockbuster class
 class Inventory:
     def __init__(self, id, title, rating, release_year, copies_available):
         self.id = int(id)

@@ -1,6 +1,7 @@
 import csv
 import os.path
 
+#Create customer class with attributes and object method - to use for methods in blockbuster class
 class Customer:
     def __init__(self, id, account_type, first_name, last_name, current_video_rentals = ''):
         self.id = int(id)

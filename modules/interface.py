@@ -14,30 +14,30 @@ def interface():
         print('0. Exit                        |')
         print('--------------------------------\n')
         
-        option = int(input('Please Enter Option: '))
+        option = input('Enter Option: ')
 
-        if option == 1:
+        if option == '1':
             blockbuster.view_inventory()
         
-        elif option == 2:
+        elif option == '2':
             blockbuster.list_customers()
             blockbuster.view_customer_rentals()
         
-        elif option == 3:
+        elif option == '3':
             blockbuster.list_customers()
 
-        elif option == 4:
+        elif option == '4':
             blockbuster.add_customer()
             
-        elif option == 5:
+        elif option == '5':
             blockbuster.view_inventory()
             blockbuster.rent_video()
         
-        elif option == 6:
+        elif option == '6':
             blockbuster.view_inventory()
             blockbuster.return_video()
 
-        elif option == 0:
+        elif option == '0':
             exit()
 
         else:
