@@ -43,7 +43,15 @@ class Blockbuster:
         customer_data['first_name'] = input("Enter first name: ")
         customer_data['last_name'] = input("Enter last name: ")
         customer_data['account_type'] = input("Enter account type (sx, px, sf, pf): ")
-        customer_data['id'] = input("Enter unique id: ") 
+        if customer_data['account_type'] == 'sx' or customer_data['account_type'] == 'px' or customer_data['account_type'] == 'sf' or customer_data['account_type'] == 'pf' :
+            customer_data['id'] = int(input("Enter unique id: "))
+            for i, customer in enumerate(self.customers):
+                if customer_data['id'] == customer.id:
+                    print('\nCustomer with ID already exists')
+                    return
+        else:
+            print('\nInvalid Account Type')
+            return
         
         new_customer = Customer(**customer_data)
         self.customers.append(new_customer)
@@ -133,4 +141,3 @@ class Blockbuster:
                     for i, movie in enumerate(self.inventory):
                         if movie_title == movie.title:
                             movie.copies_available += 1
-        
