@@ -22,3 +22,4 @@ class Customer:
                 customers.append(Customer(**dict(row)))
         
         return customers 
+

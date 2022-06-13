@@ -22,3 +22,4 @@ class Inventory:
                 movies.append(Inventory(**dict(row)))
 
         return movies 
+

@@ -37,7 +37,7 @@ class Blockbuster:
         for i, customer in enumerate(self.customers):
             print(f'{customer.id}. {customer.first_name} {customer.last_name}')
 
-#Option 4 to instantiate a new customer
+#Option 4 to instantiate new customer
     def add_customer(self):
         customer_data = {}
         customer_data['first_name'] = input("Enter first name: ")
@@ -89,7 +89,7 @@ class Blockbuster:
                 for i, movie in enumerate(self.inventory):
                     if movie_title == movie.title:
                         if movie.rating == 'R':
-                            print('Family Account Cannot Rent R Movies')
+                            print('\nFamily Account Cannot Rent R Movies')
                             return
                 if customer.current_video_rentals == '':
                     print('\nVideo Rented Sucessfully')
@@ -126,9 +126,11 @@ class Blockbuster:
             if cust_id == customer.id:
                 if movie_title in customer.current_video_rentals:
                     print('\nVideo Return Successful')
-                    customer.current_video_rentals = customer.current_video_rentals.replace(movie_title, '')
+                    if len(customer.current_video_rentals.split('/')) > 1:
+                        customer.current_video_rentals = customer.current_video_rentals.replace(f'{movie_title}/', '')
+                    if len(customer.current_video_rentals.split('/')) == 1:
+                        customer.current_video_rentals = customer.current_video_rentals.replace(movie_title, '')
                     for i, movie in enumerate(self.inventory):
                         if movie_title == movie.title:
                             movie.copies_available += 1
-        
         
